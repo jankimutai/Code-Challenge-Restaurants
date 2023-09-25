@@ -4,20 +4,23 @@
 #   - returns the rating for a restaurant.
 # - `Review all()`
 #   - returns all of the reviews
-
+# from customer import Customer
 class Review:
-    all_reviews = []
+    all_reviews_1 = {}
+    count = 0
     def __init__(self, customer, restaurant, rating):
         self._customer = customer
         self._restaurant = restaurant
         self.rating = rating
-        Review.all_reviews.append(self.rating)
+        Review.count +=1
+        
+        Review.all_reviews_1[Review.count] = restaurant,rating,customer
     
     def rating(self):
         return self.rating
     @classmethod
     def all(cls):
-        return cls.all_reviews
+        return [value for value in cls.all_reviews_1.items()]
     
 # Review
 # - `Review customer()`
@@ -26,18 +29,24 @@ class Review:
 # - `Review restaurant()`
 #   - returns the restaurant object for that given review
 #   - Once a review is created, should not be able to change the restaurant
-    def review_customer(self):
+    def customer(self):
         return self._customer
-    def review_restaurant(self):
+    def restaurant(self):
         return self._restaurant
 
+# customer1 = Customer('JAN','KIMUTAI')
+# customer2 = Customer('ALVIN','OMBITO')
+# customer3 = Customer('DAN','NJOKA')
+
+
+        
 
 review1 = Review('JAN','MAGGIES',9)
-review2 = Review('BIN','PIZZA INN',7)
-review3 = Review('KIMUTAI','WESTON',6)
+review4 = Review('ALVIN','MAGGIES',8)
+review2 = Review('SHALLON','WESTON',7)
+review3 = Review('LABAN','WESTON',7)
+review5 = Review('CYNTHIA','WESTON',1.4)
+review6 = Review('NICOLE','WESTON',7)
 
-print(review1.rating)
-print(review2.rating)
-print(review3.rating)
 
-print(Review.all())
+# print(Review.all_reviews_1)

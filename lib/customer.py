@@ -11,12 +11,16 @@
 #   - returns the full name of the customer, with the given name and the family name concatenated, Western style.
 # - `Customer all()`
 #   - returns **all** of the customer instances
+from review import Review
 class Customer():
     customers = []
     def __init__(self,given_name,family_name):
-        self.given_name = given_name
-        self.family_name = family_name
+        if type(self.given_name)== str:
+            self.given_name = given_name
+        if type(self.family_name):
+            self.family_name = family_name
         Customer.customers.append(given_name)
+        self.review =[]
 
     def given_name(self):
         return self.given_name
@@ -27,9 +31,15 @@ class Customer():
     @classmethod
     def all(cls):
         return [customer for customer in cls.customers]
-customer1 = Customer('JAN','KIMUTAI')
-customer2 = Customer('ALVIN','OMBITO')
-customer3 = Customer('DAN','NJOKA')
-print(Customer.all())
-   
+    
+    def restaurants(self):
+        reviews = set()
+        for key,value in Review.all_reviews_1.items():
+            if value[0] == self._restaurant_name:
+                reversed.append(value[2])
+        return list(reviews)
+    def add_review(self,review):
+        self.review.append(review)
+
+
     

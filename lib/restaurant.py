@@ -4,27 +4,37 @@
 # - `Restaurant name()`
 #   - returns the restaurant's name
 #   - should not be able to change after the restaurant is created
-
+from review import Review
 class Restaurant():
-    our_reviews = []
+    
     def __init__(self,restaurant_name):
         self._restaurant_name = restaurant_name
     def name(self):
         return self._restaurant_name
-# Restaurant
-# - `Restaurant reviews()`
-#   - returns a list of all reviews for that restaurant
-# - `Restaurant customers()`
-#   - Returns a **unique** list of all customers who have reviewed a particular restaurant.
-    def review_restaurant():
-        pass
-    def customer_review():
-        pass
+    def restaurant_reviews(self):
+        reviews = []
+        for key,value in Review.all_reviews_1.items():
+            if  value[0]== self._restaurant_name:
+                reviews.append(value[1])
+        return reviews
+    def customer_reviews(self):
+        customer_revs = []
+        for key,value in Review.all_reviews_1.items():
+            if value[0] == self._restaurant_name:
+                customer_revs.append(value[2])
+        return customer_revs 
+    @classmethod
+    def all_reviews(cls):
+        return cls.reviews
+res = Restaurant('MAGGIES')
+res1 = Restaurant('WESTON')
+# Returns a **unique** list of all customers who have reviewed a particular restaurant.
+print('LIST OF ALL CUSTOMERS REVIEWS FOR WESTON: ',res1.customer_reviews())
+print('LIST OF ALL CUSTOMERS REVIEWS FOR MAGGIES: ',res.customer_reviews())
+# Returns a list of all reviews for that restaurant
+print('LIST OF REVIEWS FOR MAGGIES: ',res.restaurant_reviews())
+print('LIST OF REVIEWS FOR WESTON :',res1.restaurant_reviews())
 
-restaurant1 = Restaurant('MAGGIES')
-restaurant2 = Restaurant('CHICKEN INN')
-restaurant3 = Restaurant('PIZZA INN')
 
-print(restaurant1.name())
-print(restaurant2.name())
-print(restaurant3.name())
+
+
