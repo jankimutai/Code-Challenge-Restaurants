@@ -36,10 +36,13 @@ class Customer():
         reviews = set()
         for key,value in Review.all_reviews_1.items():
             if value[0] == self._restaurant_name:
-                reversed.append(value[2])
+                reviews.append(value[2])
         return list(reviews)
-    def add_review(self,review):
-        self.review.append(review)
+    def add_review(self,restaurant,rating,customer):
+        new_review=Review(self, restaurant, rating,customer)
+        return new_review
+    
+        
 
 
     
